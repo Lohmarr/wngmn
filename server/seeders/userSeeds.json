@@ -1,0 +1,72 @@
+[
+  {
+    "birdname": "Dove Paloma",
+    "username": "spanishdove",
+    "img": "https://pbs.twimg.com/media/BL63fbnCIAEtUUx.jpg",
+    "email": "spanishdove@birds.com",
+    "password": "password01"
+  },
+  {
+    "birdname": "Kanara Lark",
+    "username": "hebrewsongbird",
+    "img": "https://rare-gallery.com/thumbs/4587706-animals-selfies-geese-memes-birds.jpg",
+    "email": "hebrewsongbird@birds.com",
+    "password": "password02"
+  },
+  { 
+    "birdname": "Kestrel Hawk",
+    "username": "scarymeateatingbird",
+    "img": "https://i.kym-cdn.com/photos/images/original/001/853/656/3e7.jpg",
+    "email": "scarymeateatingbird@birds.com",
+    "password": "password03"
+  },
+  {
+    "birdname": "Peng Laraline",
+    "username": "waterbird",
+    "img": "https://media.npr.org/assets/img/2018/03/09/penguin-selfie_custom-708a6ce4d7a9eb447eab75bb51fa4b4034ed0fed-s1200-c85.webp",
+    "email": "waterbird@birds.com",
+    "password": "password04"
+  },
+  {
+    "birdname": "Faulkner Fowler",
+    "username": "ahumanwhotrainsorhunts",
+    "img": "https://media.tenor.com/0WJHIJCpxi0AAAAd/selfie-stick.gif",
+    "email": "ahumanwhotrainsorhunts@birds.com",
+    "password": "password05"
+  },
+  {
+    "birdname": "Cygnet Fledgling",
+    "username": "babybirds",
+    "img": "https://pbs.twimg.com/media/C_1hNobXsAATQhd.jpg",
+    "email": "babybirds@birds.com",
+    "password": "password06"
+  },
+  {
+    "birdname": "Claravis Crane",
+    "username": "morewaterybirds",
+    "img": "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/audio/video/2015/7/16/1437054434561/KP_356839_crop_1200x720.jpg?width=1280&quality=85&auto=format&fit=max&s=86b8ea6df43be155559c5256804785dc",
+    "email": "morewaterybirds@birds.com",
+    "password": "password07"
+  },
+  {
+    "birdname": "Loriini Arini",
+    "username": "parrots",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCJTyGPGjNrX0idd-MpshWJA1j4Fv5MUSrSg&usqp=CAU",
+    "email": "parrots@birds.com",
+    "password": "password08"
+  },
+  {
+    "birdname": "Lonan Merula",
+    "username": "blackbird",
+    "img": "https://media-cdn.tripadvisor.com/media/photo-s/05/e7/1e/d7/red-tailed-black-cockatoo.jpg",
+    "email": "blackbird@birds.com",
+    "password": "password09"
+  },
+  {
+    "birdname": "Talon Claw",
+    "username": "roughguy",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2u6dGSTmQ9xQCdrBZd7n_QDD-cxLVsp8y-g&usqp=CAU",
+    "email": "roughguy@birds.com",
+    "password": "password10"
+  }
+]
