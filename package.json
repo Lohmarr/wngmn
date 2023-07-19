@@ -11,7 +11,8 @@
     "multer-gridfs-storage": "^5.0.2",
     "nodemon": "^2.0.22",
     "random-animals-api": "^1.2.6",
-    "random-animals-pictures": "^1.0.1"
+    "random-animals-pictures": "^1.0.1",
+    "simpledotcss": "^2.2.1"
   },
   "description": "",
   "main": "server/server.js",

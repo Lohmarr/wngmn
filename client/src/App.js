@@ -1,6 +1,5 @@
 import React from "react";
 
-
 import {
   ApolloClient,
   InMemoryCache,
@@ -9,11 +8,10 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // We import our Welcome component from our components folder so that we can eventually return it.
 
-import "./index.css";
+import "./componentStyles/index.css";
 import Welcome from "./pages/Welcome";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
@@ -45,7 +43,7 @@ const client = new ApolloClient({
 
 // Inside our App component, we have a return method that contains all the JSX we want to render to the screen.
 
- function App() {
+function App() {
   return (
     <ApolloProvider client={client}>
       <Router>

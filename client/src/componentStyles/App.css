@@ -1,0 +1,65 @@
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(../../public/imgs/darambird.png);
+    background-size: cover;
+}
+
+/* Landing Page */
+.header {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+}
+
+.welc-grid, .footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.image-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-carousel {
+  position: relative;
+}
+
+/* Image Carousel */
+.image-carousel img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  animation: carousel 10s infinite;
+  max-width: 60%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  padding: 5px;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.image-carousel img.active {
+  opacity: 1;
+}
+
+@keyframes carousel {
+  0%,
+  100% {
+    transform: opacity(0);
+  }
+  33.33% {
+    transform: opacity(0.5);
+  }
+  66.66% {
+    transform: opacity(1);
+  }
+}
+
+/* Footer */
+.f-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

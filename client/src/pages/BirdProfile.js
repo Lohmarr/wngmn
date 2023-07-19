@@ -1,5 +1,4 @@
 import React from "react";
-import "../componentStyles/birdProfile.css";
 import PostForm from "../components/PostForm";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";

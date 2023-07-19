@@ -7,7 +7,7 @@ const migrationPatterns = require("./birdMigratoryPatterns");
 // Generate random User data
 const generateUserData = async (usedNames) => {
   // Generate quote
-  const quoteURL = "https://animechan.vercel.app/api/random";
+  const quoteURL = "https://animechan.xyz/api/random";
   const quoteResponse = await fetch(quoteURL);
   const quoteData = await quoteResponse.json();
   const randomQuote = quoteData.quote;
@@ -25,7 +25,7 @@ const generateUserData = async (usedNames) => {
 
   // Generate image
   const imgURL =
-    "https://api.unsplash.com/photos/random?query=Bird&client_id=_fkWGCKcNRrOzBAw-Wg0EOkAuxa75TsXyMamY6fx0I8";
+    "https://api.unsplash.com/photos/random?query=Bird&client_id=WRoEDY4c-F5JQrvWZAOc-msgmPeGM6ge71fIALwUiys";
   const imgResponse = await fetch(imgURL);
   const imgData = await imgResponse.json();
   const randomImg = imgData.urls.regular;

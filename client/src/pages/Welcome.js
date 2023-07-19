@@ -41,19 +41,19 @@ const Welcome = () => {
         <img src="../imgs/P3-logo.png" alt="wingman logo" />
         <button onClick={togglePopupTwo}>Log in</button>
       </div>
-      <div className="leftSide">
-        <h1>READY TO SPREAD YOUR WINGS AND FLY?</h1>
-        <p>WINGMAN is the only dating app made by birds, for birds.</p>
-        <p>
-          You deserve to find the perfect partner to meet today whatever your
-          needs.
-        </p>
-        <p>Looking to nest down for the long haul?</p>
-        <p>Looking for an easy breezy flit?</p>
-        <p>WINGMAN has you covered</p>
-        <button onClick={togglePopup}>JOIN WINGMAN TODAY</button>
-      </div>
-      <div className="content">
+      <div className="welc-grid">
+        <div className="welc-left">
+          <h1>READY TO SPREAD YOUR WINGS AND FLY?</h1>
+          <h5>WINGMAN is the only dating app made by birds, for birds.</h5>
+          <h5>
+            You deserve to find the perfect partner to meet today whatever your
+            needs.
+          </h5>
+          <h5>Looking to nest down for the long haul?</h5>
+          <h5>Looking for an easy breezy flit?</h5>
+          <h5>WINGMAN has you covered</h5>
+          <button onClick={togglePopup}>JOIN WINGMAN TODAY</button>
+        </div>
         <div className="image-carousel">
           <img
             className="active c-img"
