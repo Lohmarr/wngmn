@@ -33,7 +33,7 @@ const generateUserData = async (usedNames) => {
     birdname: randomBirdName,
     img: randomImg,
     quote: randomQuote,
-    Migration: randomMigration,
+    migration: randomMigration,
   };
 };
 // Generate random username, password, and email

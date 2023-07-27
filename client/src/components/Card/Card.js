@@ -1,10 +1,19 @@
 import React from "react";
 
 const Card = ({ user }) => {
+  let cardStyle = {
+    backgroundImage: `url(${user.img})`,
+  };
+
+  if (!user.img) {
+    cardStyle = {
+      background: "var(--gradient)"
+    };
+  }
+
   return (
-    <div className="card">
-        <img src={user.img} alt={user.birdname} className="card-image" />
-        <h1 className="card-title">{user.birdname}</h1>
+    <div className="card" style={cardStyle}>
+      <h1 className="card-title">{user.birdname}</h1>
     </div>
   );
 };

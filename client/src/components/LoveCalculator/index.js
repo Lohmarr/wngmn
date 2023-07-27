@@ -25,7 +25,7 @@ function LoveCalculator() {
       setViewedProfile(bird.birdname);
     }
   }, [id, data]);
-  
+
   useEffect(() => {
     const fetchLovePercentage = async () => {
       const url = `https://love-calculator.p.rapidapi.com/getPercentage?fname=${userName}&sname=${viewedProfile}`;
@@ -46,21 +46,25 @@ function LoveCalculator() {
         console.error(error);
       }
     };
-    
-      fetchLovePercentage();
-    
+
+    fetchLovePercentage();
   }, [viewedProfile, userName]);
+
   if (loading) return <p>Loading...</p>;
-  if (error) {
-    return <div>{error}</div>;
-  } else if (lovePercentage === null) {
+  if (error) return <div>{error}</div>;
+
+  if (lovePercentage === null) {
     return <div>Loading...</div>;
   }
   return (
     <div>
-      <h2>&hearts; Love Calculator &hearts;</h2>
-      <p>The love potential with {viewedProfile} is{" "}
-      {lovePercentage}%!</p>
+      <h2 className="loveTitle">&hearts; Love Calculator &hearts;</h2>
+      {lovePercentage && (
+        <p>
+        The love potential with {viewedProfile} is{" "}
+        <span className="lovePercentage">{lovePercentage}%!</span>
+      </p>
+      )}
     </div>
   );
 }

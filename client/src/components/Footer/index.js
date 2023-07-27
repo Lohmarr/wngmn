@@ -3,15 +3,17 @@ import React from "react";
 const Footer = () => {
   return (
     <div className="footer">
-      <h5>
-        "Chirp cheep. Chirp chirp chip chirp, cheep chirp. Chirpy cheep chirp
-        chip."
-      </h5>
-      <span></span>
-      <p>- A Birb</p>
+      <div>
+        <h5 className="f-left">
+          "Chirp cheep. Chirp chirp chip chirp, cheep chirp. Chirpy cheep chirp
+          chip."
+        </h5>
+        <span></span>
+        <p>- A Birb</p>
+      </div>
       <ul>
         <li>
-          <h5 className='f-left'>
+          <h5>
             “Bawk Bawk. Wark Bawk buck buck bawk. Bawk buck buck buck
             buckaaaaaw!”
           </h5>

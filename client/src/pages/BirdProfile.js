@@ -36,7 +36,7 @@ const BirdProfile = () => {
             <img src={bird.img} alt="Profile" />
           </div>
           <div className="profile-details">
-            <h2>About Me</h2>
+            <h3>About Me</h3>
             <p className="bio-p">{bird.quote}</p>
           </div>
         </div>

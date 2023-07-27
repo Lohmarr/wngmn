@@ -52,7 +52,7 @@ const Welcome = () => {
           <h5>Looking to nest down for the long haul?</h5>
           <h5>Looking for an easy breezy flit?</h5>
           <h5>WINGMAN has you covered</h5>
-          <button onClick={togglePopup}>JOIN WINGMAN TODAY</button>
+          <button className="join" onClick={togglePopup}>JOIN WINGMAN TODAY</button>
         </div>
         <div className="image-carousel">
           <img
