@@ -8,12 +8,18 @@ const resolvers = {
     // get all users
     users: async () => {
       const findUser = await User.find({});
-      console.log(findUser)
-      return findUser
+      console.log(findUser);
+      return findUser;
     },
-    // get a user by username and populate that user's posts
-    user: async (parent, { username }) => {
-      return User.findOne({ username });
+    // get a user by id and populate that user's posts
+    user: async (_, { _id }) => {
+      try {
+        const user = await User.findById(_id);
+        return user;
+      } catch (error) {
+        console.error('Error querying user:', error);
+        throw new Error('Failed to fetch user');
+      }
     },
     // get all posts and populate those posts with their comments, sort by newest
     posts: async (parent, { username }) => {
@@ -44,18 +50,20 @@ const resolvers = {
 
     async updateUser(parent, args, ctx, info) {
       const { userId, ...userData } = args;
-      const user = await User.findByIdAndUpdate(userId, userData, { new: true });
+      const user = await User.findByIdAndUpdate(userId, userData, {
+        new: true,
+      });
 
       return user;
     },
 
     deleteUser: async (parent, { userId }, context) => {
-        const user = await User.findOneAndDelete({
-          _id: userId,
-        });
+      const user = await User.findOneAndDelete({
+        _id: userId,
+      });
 
-        return user;
-      },
+      return user;
+    },
 
     // login a user, sign a token, and send it back (to client/src/pages/login.js)
     login: async (parent, { email, password }) => {
@@ -79,7 +87,7 @@ const resolvers = {
     addPost: async (parent, { postText }, context) => {
       if (context.user) {
         const post = await Post.create({
-          postText
+          postText,
         });
 
         await User.findOneAndUpdate(
@@ -146,21 +154,74 @@ const resolvers = {
     },
     likeUser: async (parent, { userId, likedUserId }, context) => {
       if (context.user && context.user._id === userId) {
-          const updatedUser = await User.findByIdAndUpdate(
-              userId,
-              { $addToSet: { likes: likedUserId } },
-              { new: true }
-          ).populate("birdname").populate("img");
+        const updatedUser = await User.findByIdAndUpdate(
+          userId,
+          { $addToSet: { likes: likedUserId } },
+          { new: true }
+        );
 
-          return updatedUser;
+        return updatedUser;
       }
-      
+
       throw new AuthenticationError("You need to be logged in!");
-  },
-    likedByUser: async (parent, { userId, likedById }, { dataSources }) => {
-      const updatedUser = await dataSources.userAPI.likeUser(userId, likedById);
-      return updatedUser;
-    }
+    },
+    likedByUser: async (_, { userId, likedById }) => {
+      try {
+        const likedUser = await User.findById(userId);
+        const likedByUser = await User.findById(likedById);
+
+        if (!likedUser || !likedByUser) {
+          throw new Error("User not found");
+        }
+
+        // Check if the user has already been liked by the same user
+        const alreadyLiked = likedUser.likedBy.find(
+          (user) => user._id.toString() === likedByUser._id.toString()
+        );
+        if (alreadyLiked) {
+          throw new Error("User already liked by this user");
+        }
+
+        // Add the likedByUser to the likedUser's likedBy array
+        likedUser.likedBy.push(likedByUser);
+        await likedUser.save();
+
+        return likedUser;
+      } catch (error) {
+        throw new Error("Failed to deliver like to recipient");
+      }
+    },
+    dislikeUser: async (parent, { userId, likedUserId }, context) => {
+      if (context.user && context.user._id === userId) {
+        const updatedUser = await User.findByIdAndUpdate(
+          userId,
+          { $pull: { likes: likedUserId } },
+          { new: true }
+        );
+
+        return updatedUser;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    dislikedByUser: async (_, { userId, likedById }) => {
+      try {
+        const likedUser = await User.findById(userId);
+        const likedByUser = await User.findById(likedById);
+
+        if (!likedUser || !likedByUser) {
+          throw new Error("User not found");
+        }
+
+        // Remove the likedByUser from the likedUser's likedBy array
+        likedUser.likedBy.pull(likedByUser);
+        await likedUser.save();
+
+        return likedUser;
+      } catch (error) {
+        throw new Error("Failed to remove like from recipient");
+      }
+    },
   },
 };
 

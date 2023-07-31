@@ -12,7 +12,7 @@ const typeDefs = gql`
     password: String
     posts: [Post]!
     likedBy: [ID!]!
-    Likes: [ID!]!
+    likes: [ID!]!
     migration: String
   }
 
@@ -50,12 +50,13 @@ const typeDefs = gql`
     deleteUser(userId: ID!): User
     likeUser(userId: ID!, likedUserId: ID!): User
     likedByUser(userId: ID!, likedById: ID!): User
+    dislikeUser(userId: ID!, likedUserId: ID!): User
+    dislikedByUser(userId: ID!, likedById: ID!): User
     login(email: String!, password: String!): Auth
     addPost(postText: String!): Post
     addComment(postId: ID!, commentText: String!): Post
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
-    
   }
 
   type Subscription {

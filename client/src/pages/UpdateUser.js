@@ -52,7 +52,7 @@ const UpdateUser = () => {
       <h4>Update Profile</h4>
       <div>
         {data ? (
-          <p>
+          <p className="popup-p">
             You're updated! you can fly back to your account, just click the close button!
           </p>
         ) : (

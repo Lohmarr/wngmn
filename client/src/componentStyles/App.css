@@ -38,7 +38,7 @@ p {
 }
 
 .welc-grid,
-.header, .footer {
+.header, .footer, .dash-sorting {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
@@ -132,6 +132,10 @@ p {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.popup-p {
+  text-shadow: none !important;
 }
 
 /* dashboard card styling */

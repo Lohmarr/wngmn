@@ -8,6 +8,8 @@ export const QUERY_USERS = gql`
       img
       quote
       migration
+      likes
+      likedBy
     }
   }
 `;

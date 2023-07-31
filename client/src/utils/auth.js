@@ -15,6 +15,16 @@ class AuthService {
     return id;
   }
 
+  getUserLikes() {
+    // Check if the 'likes' value is set in the localStorage
+    const likes = localStorage.getItem('likes');
+    if (!likes || likes === "") {
+      console.warn("'likes' value is not set in the localStorage");
+      return [];
+    }
+    return JSON.parse(likes);
+  }
+
   getName() {
     // Check if the 'birdname' value is set in the localStorage
     const name = localStorage.getItem('birdname');
@@ -53,6 +63,8 @@ class AuthService {
     localStorage.setItem('id_token', idToken);
     localStorage.setItem('_id', decodedToken.data._id);
     localStorage.setItem('birdname', decodedToken.data.birdname);
+    localStorage.setItem('likes', JSON.stringify(decodedToken.data.likes));
+    localStorage.setItem('likedBy', JSON.stringify(decodedToken.data.likedBy));
     console.log(decodedToken.data._id)
     window.location.assign('/dashboard');
   }

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import "../componentStyles/birdProfile.css";
 
 import { useMutation, useQuery } from "@apollo/client";
 
@@ -107,8 +106,8 @@ const PostForm = () => {
         // if the user is not logged in
         <p>
           You need to be logged in to post. Please{" "}
-          <Link to="/login">login</Link> or
-          <Link to="/signup">signup.</Link>
+          <Link to="/">login</Link> or
+          <Link to="/"> signup.</Link>
         </p>
       )}
     </div>

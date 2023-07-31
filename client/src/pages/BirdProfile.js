@@ -6,7 +6,9 @@ import { QUERY_USERS } from "../utils/queries";
 import Header from "../components/Header/index";
 import Footer from "../components/Footer/index";
 import LoveCalculator from "../components/LoveCalculator/index";
-import Posts from "../components/Posts/index"
+import Posts from "../components/Posts/index";
+import LikeUser from "../components/LikeUser";
+import AuthService from "../utils/auth";
 
 const BirdProfile = () => {
   const { id } = useParams();
@@ -23,13 +25,19 @@ const BirdProfile = () => {
       bird = user;
     }
   });
+
+  const loggedInUserId = AuthService.getUserId();
+
   return (
     <section className="layout">
       <Header />
       <div className="user-profile">
         <div className="profile-header">
           <h1>{bird.birdname}</h1>
-          <p>This bird is great, isn't it? Dont'cha wanna date it? {bird.migration}</p>
+          <p>
+            This bird is great, isn't it? Dont'cha wanna date it?{" "}
+          </p>
+          <p>{bird.migration}</p>
         </div>
         <div className="profile-content">
           <div className="profile-image">
@@ -40,7 +48,10 @@ const BirdProfile = () => {
             <p className="bio-p">{bird.quote}</p>
           </div>
         </div>
-        <LoveCalculator/>
+      </div>
+      <div>
+        <LoveCalculator />
+        <LikeUser bird={bird} loggedInUserId={loggedInUserId} />
         <Posts />
         <PostForm />
       </div>

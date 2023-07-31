@@ -60,7 +60,7 @@ const Signup = () => {
       <div>
         {data ? (
           // if there is data (successful signup)
-          <p>
+          <p className="popup-p">
             you're logged in! you can fly back{" "}
             <Link to="/dashboard">to the homepage here.</Link>
           </p>
