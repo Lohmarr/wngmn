@@ -1,20 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "../componentStyles/userProfile.css";
-import { useState } from 'react';
 import { useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_USERS } from "../utils/queries";
-import { DELETE_USER } from "../utils/mutations"
+import { DELETE_USER } from "../utils/mutations";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import UpdatePop from "../components/popUps/updatePop";
 import Posts from "../components/Posts";
+import ConfirmationModal from "../components/ConfirmationModal";
 
 const UserProfile = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
+  };
+
+  const toggleConfirmation = () => {
+    setShowConfirmation(!showConfirmation);
   };
 
   const { id } = useParams();
@@ -33,14 +39,15 @@ const UserProfile = () => {
       bird = user;
     }
   });
-  console.log(bird);
 
   const handleDelete = async () => {
+    toggleConfirmation();
     // Call the DELETE_USER mutation to delete the user
     await deleteUser({ variables: { userId: id } });
     // Redirect the user to the homepage
-    window.location.assign('/');
+    window.location.assign("/");
   };
+
   return (
     <section className="layout">
       <Header />
@@ -59,8 +66,20 @@ const UserProfile = () => {
             <Posts />
           </div>
         </div>
-        <button onClick={togglePopup} className="upd-btn">Update Profile</button>
-        <button onClick={handleDelete} className="dlt-btn">Delete Profile</button>
+        <button onClick={togglePopup} className="upd-btn">
+          Update Profile
+        </button>
+        <button onClick={toggleConfirmation} className="dlt-btn">
+          Delete Profile
+        </button>
+        {showConfirmation && (
+          <ConfirmationModal
+            message="Are you sure you want to delete your profile?"
+            confirmText="Delete"
+            onCancel={toggleConfirmation}
+            onConfirm={handleDelete}
+          />
+        )}
       </div>
       <Footer />
       {showPopup && <UpdatePop onClose={togglePopup} />}

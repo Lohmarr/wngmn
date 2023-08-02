@@ -69,10 +69,10 @@ const PostForm = () => {
         // if the user is logged in
         <>
           <form
-            className="flex-row justify-center justify-space-between-md align-center margin-right: 100px"
+            className="form"
             onSubmit={handleFormSubmit}
           >
-            <div className="col-12 col-lg-9 ">
+            <div className="text-area">
               <textarea
                 name="postText"
                 placeholder="chirp away!"

@@ -15,6 +15,7 @@ button {
   font-size: large;
   filter: hue-rotate(0deg);
   transition: filter 0.3s;
+  margin: 5px;
 }
 button:hover {
   transition: hue-rotate(270deg);
@@ -229,17 +230,8 @@ p {
   cursor: pointer;
 }
 
-.upd-btn {
-  margin-right: 200px;
-}
-
-.pst-btn {
-  margin-right: 200px;
-}
-
 .dlt-btn {
   background-color: red;
-  margin-right: 200px;
 }
 
 /* Footer */

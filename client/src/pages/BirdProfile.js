@@ -1,5 +1,4 @@
 import React from "react";
-import PostForm from "../components/PostForm";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_USERS } from "../utils/queries";
@@ -7,6 +6,7 @@ import Header from "../components/Header/index";
 import Footer from "../components/Footer/index";
 import LoveCalculator from "../components/LoveCalculator/index";
 import Posts from "../components/Posts/index";
+import PostForm from "../components/PostForm";
 import LikeUser from "../components/LikeUser";
 import AuthService from "../utils/auth";
 

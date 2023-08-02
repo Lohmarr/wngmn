@@ -7,7 +7,7 @@ import { UPDATE_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 const UpdateUser = () => {
-    const userId = Auth.getUserId()
+  const userId = Auth.getUserId();
 
   const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ const UpdateUser = () => {
     userId: userId,
     birdname: "",
     img: "",
-    quote: ""
+    quote: "",
   });
 
   // mutation for updating user
@@ -24,11 +24,12 @@ const UpdateUser = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
+    if (value !== "") {
+      setFormState((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
   };
 
   const handleFormSubmit = async (event) => {
@@ -39,12 +40,11 @@ const UpdateUser = () => {
       const { data } = await updateUser({
         variables: { ...formState },
       });
-      console.log(data)
+      console.log(data);
       Auth.login(data.updateUser.token);
-
     } catch (e) {
       console.error(e);
-    }   
+    }
   };
 
   return (
@@ -53,31 +53,35 @@ const UpdateUser = () => {
       <div>
         {data ? (
           <p className="popup-p">
-            You're updated! you can fly back to your account, just click the close button!
+            You're updated! You can fly back to your account, just click the
+            close button!
           </p>
         ) : (
           // if there is no data (update form)
           <form onSubmit={handleFormSubmit}>
             <input
-              placeholder="enter your new name"
+              placeholder="Enter your new name!"
               name="birdname"
               type="text"
               value={formState.birdname}
               onChange={handleChange}
+              required
             />
             <input
-              placeholder="enter your img URL"
+              placeholder="Enter your profile picture's URL!"
               name="img"
               type="text"
               value={formState.img}
               onChange={handleChange}
+              required
             />
             <input
-              placeholder="enter a quote to feature"
+              placeholder="Tell us about you!"
               name="quote"
               type="text"
               value={formState.quote}
               onChange={handleChange}
+              required
             />
             <button type="submit">submit</button>
           </form>
