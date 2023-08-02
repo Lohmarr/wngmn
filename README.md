@@ -1,4 +1,4 @@
-# Wingman
+<!-- # Wingman
 
 ## Description
 
@@ -9,7 +9,7 @@ In this MERN-stack single-page dating application, a user can create and maintai
 To use the application, simply open this link in your browser of choice!
 <!-- link here -->
 
-You will be land on our home page and be able to create an account or log-in from there. Please take a look at all the profiles that our fellow feathered creatures already created!
+<!-- You will be land on our home page and be able to create an account or log-in from there. Please take a look at all the profiles that our fellow feathered creatures already created!
 
 ## Credits
 
@@ -17,4 +17,4 @@ Credit to [Jameson Suttles](https://github.com/Jsuttle2) for the Wingman logo
 
 ## License
 
-This code is released under the MIT License.
+This code is released under the MIT License. --> -->
