@@ -10,17 +10,6 @@ export const QUERY_USERS = gql`
       migration
       likes
       likedBy
-    }
-  }
-`;
-
-export const QUERY_SINGLE_USER = gql`
-  query User($userId: ID!) {
-    user(userId: $userId) {
-      _id
-      birdname
-      username
-      quote
       posts {
         comments {
           _id
@@ -32,7 +21,31 @@ export const QUERY_SINGLE_USER = gql`
         postAuthor
         postText
       }
+    }
+  }
+`;
+
+export const QUERY_SINGLE_USER = gql`
+  query User($userId: ID!) {
+    users(userId: $userId) {
+      _id
+      birdname
       img
+      quote
+      migration
+      likes
+      likedBy
+      posts {
+        comments {
+          _id
+          commentAuthor
+          commentText
+          createdAt
+        }
+        createdAt
+        postAuthor
+        postText
+      }
     }
   }
 `;
@@ -81,10 +94,10 @@ export const QUERY_ME = gql`
 `;
 
 export const GET_USER_LIKES = gql`
-query GetUserLikes($id: ID!) {
-  getUserLikes(id: $id) {
-    birdname
-    img
+  query GetUserLikes($id: ID!) {
+    getUserLikes(id: $id) {
+      birdname
+      img
+    }
   }
-}
 `;

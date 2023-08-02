@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import AuthService from "../../utils/auth";
 
 const userId = AuthService.getUserId()
-console.log(userId)
 
 const Header = () => {
   const userId = AuthService.getUserId();

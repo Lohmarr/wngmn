@@ -65,6 +65,7 @@ export const ADD_POST = gql`
       _id
       postText
       createdAt
+      postAuthor
       comments {
         _id
         commentText

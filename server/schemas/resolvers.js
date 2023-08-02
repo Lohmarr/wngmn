@@ -28,7 +28,7 @@ const resolvers = {
     },
     // get a single post by id
     post: async (parent, { postId }) => {
-      return Post.findOne({ _id: postId });
+      return Post.findOne({ _id: postId }).populate("comments");
     },
     // show the logged in user's profile and populate their posts
     me: async (parent, args, context) => {
@@ -38,6 +38,7 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
   },
+
   // create/update/delete data in the db
   Mutation: {
     // create a user, sign a token, and send it back (to client/src/pages/signup.js)
@@ -88,6 +89,7 @@ const resolvers = {
       if (context.user) {
         const post = await Post.create({
           postText,
+          postAuthor: context.user.username
         });
 
         await User.findOneAndUpdate(

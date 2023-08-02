@@ -17,9 +17,10 @@ const Posts = () => {
       bird = user;
     }
   });
+  console.log(bird)
 
   if (!bird || !bird.posts) {
-    return <p>No posts found for this user</p>
+    return <p>! Posts are a feature still currently being developed! Apologies.</p>
   }
 
   {

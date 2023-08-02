@@ -14,8 +14,8 @@ const PostForm = () => {
 
   // state for counting the characters in the post
   const [characterCount, setCharacterCount] = useState(0);
+
   const {loading, data} = useQuery(QUERY_POSTS);
-  console.log(data)
 
   const [addPost, { error }] = useMutation(ADD_POST, {
     // mutation to add a new post
