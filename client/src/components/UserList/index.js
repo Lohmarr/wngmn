@@ -52,6 +52,7 @@ const UserList = () => {
         <button onClick={handleLikedBirdsButtonClick}>
           {showLikedBirds ? "Show All Birds" : "Show Liked Birds"}
         </button>
+        <h2>No birds currently on this path!</h2>
         {loggedInLikes === null ||
           (loggedInLikes.length === 0 && (
             <h2>You haven't liked any birds yet!</h2>

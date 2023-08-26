@@ -17,25 +17,28 @@ const Posts = () => {
       bird = user;
     }
   });
-  console.log(bird)
 
   if (!bird || !bird.posts) {
-    return <p>! Posts are a feature still currently being developed! Apologies.</p>
-  }
-
-  {
-    loading ? (
-      <div>Loading posts...</div>
-    ) : (
-      <div>
-        {bird.posts.map((post) => (
-          <div key={post.id}>
-            <p>{post.postText}</p>
-          </div>
-        ))}
-      </div>
+    return (
+      <p>! Posts are a feature still currently being developed! Apologies.</p>
     );
   }
+
+  return (
+    <div>
+      {loading ? (
+        <div>Loading posts...</div>
+      ) : (
+        <div>
+          {bird.posts.map((post) => (
+            <div key={post.id}>
+              <p>{post.postText}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 };
 
-export default Posts
+export default Posts;
