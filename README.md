@@ -26,6 +26,8 @@ Wingman is a full-stack web application built using the MERN (MongoDB, Express.j
 
 ## Getting Started
 
+[Heroku Deployment](https://wngmn-72e58af3a89c.herokuapp.com)
+
 How to run the application locally:
 
 1. Clone the repository: `git clone https://github.com/your-username/wingman.git`
