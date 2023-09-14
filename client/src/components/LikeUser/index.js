@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   LIKE_USER,
   LIKED_BY_USER,
@@ -8,9 +8,14 @@ import {
 } from "../../utils/mutations";
 
 const LikeUser = ({ bird, loggedInUserId }) => {
-  const [isLikedByUser, setIsLikedByUser] = useState(
-    bird.likedBy.includes(loggedInUserId)
-  );
+  const [isLikedByUser, setIsLikedByUser] = useState(false);
+
+  useEffect(() => {
+    setIsLikedByUser(bird.likedBy.includes(loggedInUserId));
+  }, [bird.likedBy, loggedInUserId]);
+
+  console.log(isLikedByUser);
+  console.log(bird.likedBy.includes(loggedInUserId));
 
   const [likeUser] = useMutation(LIKE_USER);
   const [likedByUser] = useMutation(LIKED_BY_USER);
@@ -30,7 +35,7 @@ const LikeUser = ({ bird, loggedInUserId }) => {
               const likedBirds =
                 JSON.parse(localStorage.getItem("likes")) || [];
               const updatedLikedBirds = likedBirds.filter(
-                (b) => b._id !== bird._id
+                (b) => b !== bird._id
               );
               localStorage.setItem("likes", JSON.stringify(updatedLikedBirds));
             },
@@ -48,7 +53,7 @@ const LikeUser = ({ bird, loggedInUserId }) => {
               // Add the liked bird to local storage
               const likedBirds =
                 JSON.parse(localStorage.getItem("likes")) || [];
-              const updatedLikedBirds = [...likedBirds, bird];
+              const updatedLikedBirds = [...likedBirds, bird._id];
               localStorage.setItem("likes", JSON.stringify(updatedLikedBirds));
             },
           });

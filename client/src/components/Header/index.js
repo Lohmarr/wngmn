@@ -14,6 +14,9 @@ const Header = () => {
           <img src="../imgs/P3-logo.png" alt="wingman logo" />
         </Link>
         <div className="headerRight">
+        {/* <Link to={`/account/likes/${userId}`}>
+          <button className="ac-btn">Your Likes</button>
+        </Link> */}
         <Link to={`/account/${userId}`}>
           <button className="ac-btn">Account</button>
         </Link>

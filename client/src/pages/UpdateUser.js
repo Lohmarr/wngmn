@@ -3,11 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { useMutation } from "@apollo/client";
 import { UPDATE_USER } from "../utils/mutations";
+import MigrationSelect from "../components/MigrationSelect";
 
 import Auth from "../utils/auth";
 
 const UpdateUser = () => {
   const userId = Auth.getUserId();
+
+  // const [selectedPattern, setSelectedPattern] = useState("");
+  // const handleSelectChange = (event) => {
+    //   setSelectedPattern(event.target.value);
+    // };
 
   const navigate = useNavigate();
 
@@ -17,6 +23,7 @@ const UpdateUser = () => {
     birdname: "",
     img: "",
     quote: "",
+    // migration: selectedPattern,
   });
 
   // mutation for updating user
@@ -83,6 +90,12 @@ const UpdateUser = () => {
               onChange={handleChange}
               required
             />
+             {/* <MigrationSelect handleSelectChange={handleSelectChange}
+             name="migration"
+             value={formState.migration}
+             onChange={handleChange}
+             required
+           /> */}
             <button type="submit">submit</button>
           </form>
         )}

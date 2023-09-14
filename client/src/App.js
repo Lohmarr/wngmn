@@ -17,6 +17,7 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import UserProfile from "./pages/UserProfile";
 import BirdProfile from "./pages/BirdProfile";
+import UserLikedByPage from "./pages/UserLikedByPage";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -52,6 +53,7 @@ function App() {
           <Route path="/Signup" element={<Signup />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path={`/account/:id`} element={<UserProfile />} />
+          <Route path={`/account/likes/:id`} element={<UserLikedByPage />} />
           <Route path="/bird/:id" element={<BirdProfile />} />
         </Routes>
       </Router>

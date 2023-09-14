@@ -1,12 +1,14 @@
 :root {
   --primary: #ff95ed;
+  --secondary: #b8a6b4;
   --gradient: linear-gradient(to top, white, pink 60%);
 }
 
 body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url(../../public/imgs/darambird.png);
+  url(../srcImage/darambird.png);
   background-size: cover;
+  grid-template-columns: auto !important; 
 }
 
 button {
@@ -38,8 +40,24 @@ p {
   padding: 10px;
 }
 
-.welc-grid,
-.header, .footer, .dash-sorting {
+.layout {
+  color: white;
+}
+
+.greet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  grid-column: 2;
+}
+
+.liked-button {
+  width: 20vw;
+}
+
+.header, .footer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
@@ -49,17 +67,58 @@ p {
 }
 
 /* Image Carousel */
-.image-carousel img {
+/* .image-carousel img {
   opacity: 0 !important;
   animation: carousel 10s infinite;
   transition: opacity 1.5s ease-in-out;
-  border: 5px solid var(--primary);
+  border: 3px solid var(--primary);
   border-radius: 10px;
   margin: 20px 0px 0px 20px;
+  width: 10rem;
+  height: 5rem;
 }
 
 .image-carousel img.active {
   opacity: 1 !important;
+} */
+
+.image-carousel {
+  width: 20vw;
+  height: 20vh;
+  position: relative;
+}
+
+.image-carousel ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.slide [data-active] {
+  opacity: 1;
+}
+
+.slide img {
+  display: block;
+}
+
+.carousel-button {
+  font-size: 4rem;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  background-color: rgba(0, 0, 0, .1);
+  z-index: 2;
+}
+
+.carousel-button:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, .2);
 }
 
 @keyframes carousel {
@@ -140,10 +199,18 @@ p {
 }
 
 /* dashboard card styling */
+.content {
+  text-align: center;
+}
 
-.card-list {
+.card-list, .welc-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+}
+
+.card-container {
+  display: grid;
+  justify-content: center;
 }
 
 .card {
@@ -233,6 +300,54 @@ p {
 .dlt-btn {
   background-color: red;
 }
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.post {
+  border: 5px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.post p {
+  text-shadow: none;
+}
+
+.post-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.post-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-end-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.post-delete-button {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
+  width: 2rem;
+  height: 2rem;
+}
+.post-delete-button:hover {
+  color: red;
+}
+
+.form {
+  width: 50vw;
+}
+
 
 /* Footer */
 .f-left {

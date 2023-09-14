@@ -11,15 +11,28 @@ const resolvers = {
       console.log(findUser);
       return findUser;
     },
-    // get a user by id and populate that user's posts
+    // get a user by id
     user: async (_, { _id }) => {
       try {
         const user = await User.findById(_id);
         return user;
       } catch (error) {
-        console.error('Error querying user:', error);
-        throw new Error('Failed to fetch user');
+        console.error("Error querying user:", error);
+        throw new Error("Failed to fetch user");
       }
+    },
+    // get a user's posts by id
+    userPosts: async (_, { userId }) => {
+      // Check if the user exists
+      const user = await User.findById(userId);
+      if (!user) {
+        throw new Error("User not found");
+      }
+
+      // Retrieve the user's posts
+      const posts = await Post.find({ postAuthor: user.username });
+
+      return posts;
     },
     // get all posts and populate those posts with their comments, sort by newest
     posts: async (parent, { username }) => {
@@ -36,6 +49,14 @@ const resolvers = {
         return User.findOne({ _id: context.user._id }).populate("posts");
       }
       throw new AuthenticationError("You need to be logged in!");
+    },
+    getLikes: async (_, { _id }) => {
+      try {
+        return User.findById(_id).populate("likedBy");
+      }  catch (error) {
+        console.error("Error querying user:", error);
+        throw new Error("Failed to fetch user's likedBy");
+      }
     },
   },
 
@@ -84,12 +105,16 @@ const resolvers = {
 
       return { token, user };
     },
-    // create a post a user
+    // create a post
     addPost: async (parent, { postText }, context) => {
       if (context.user) {
+        console.log(
+          "context.user log in resolvers.js ====================================",
+          context.user
+        );
         const post = await Post.create({
           postText,
-          postAuthor: context.user.username
+          postAuthor: context.user.username,
         });
 
         await User.findOneAndUpdate(

@@ -7,8 +7,15 @@ const migrationPatterns = require("./birdMigratoryPatterns");
 // Generate random User data
 const generateUserData = async (usedNames) => {
   // Generate quote
-  const quoteURL = "https://animechan.xyz/api/random";
-  const quoteResponse = await fetch(quoteURL);
+  const quoteURL = "https://waifu.it/api/quote";
+  const apiKey =  "NDY0NjExNDI0NTcyOTMyMTA4.MTY5NDQ3MzQ2MQ--.6dc098f76";
+
+  const quoteResponse = await fetch(quoteURL, {
+    headers: {
+      Authorization: apiKey,
+    },
+  });
+  
   const quoteData = await quoteResponse.json();
   const randomQuote = quoteData.quote;
 
@@ -61,7 +68,6 @@ const seedUsers = async (numUsers) => {
     const entry = await generateEntryData(user.birdname);
     userData.push({ ...user, ...entry });
   }
-  console.log(userData);
   try {
     await User.insertMany(userData, { ordered: false });
   } catch (err) {

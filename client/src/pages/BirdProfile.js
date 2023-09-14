@@ -5,7 +5,7 @@ import { QUERY_USERS } from "../utils/queries";
 import Header from "../components/Header/index";
 import Footer from "../components/Footer/index";
 import LoveCalculator from "../components/LoveCalculator/index";
-import Posts from "../components/Posts/index";
+import PostList from "../components/PostList/index";
 import PostForm from "../components/PostForm";
 import LikeUser from "../components/LikeUser";
 import AuthService from "../utils/auth";
@@ -34,9 +34,6 @@ const BirdProfile = () => {
       <div className="user-profile">
         <div className="profile-header">
           <h1>{bird.birdname}</h1>
-          <p>
-            This bird is great, isn't it? Dont'cha wanna date it?{" "}
-          </p>
           <p>{bird.migration}</p>
         </div>
         <div className="profile-content">
@@ -52,8 +49,7 @@ const BirdProfile = () => {
       <div>
         <LoveCalculator />
         <LikeUser bird={bird} loggedInUserId={loggedInUserId} />
-        <Posts />
-        <PostForm />
+        <PostList id={id} />
       </div>
       <Footer />
     </section>

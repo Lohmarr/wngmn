@@ -1,12 +1,10 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const migrationPatterns = require("../seeders/birdMigratoryPatterns");
 
 const userSchema = new Schema({
   birdname: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
   },
   username: {

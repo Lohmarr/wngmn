@@ -35,7 +35,6 @@ const PostForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(data)
 
     try {
       const { data } = await addPost({
@@ -61,9 +60,16 @@ const PostForm = () => {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleFormSubmit(event);
+    }
+  };
+
   return (
-    <div>
-      <h3>Add A Comment!</h3>
+    <div className="post-form">
+      <h3>Add A Post!</h3>
 
       {Auth.loggedIn() ? (
         // if the user is logged in
@@ -80,6 +86,7 @@ const PostForm = () => {
                 className="form-input w-100"
                 style={{ lineHeight: "1.5", resize: "vertical" }}
                 onChange={handleChange}
+                onKeyDown={handleKeyDown}
               ></textarea>
             </div>
             <p

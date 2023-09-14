@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Card = ({ user }) => {
   let cardStyle = {
@@ -7,14 +8,16 @@ const Card = ({ user }) => {
 
   if (!user.img) {
     cardStyle = {
-      background: "var(--gradient)"
+      background: "var(--gradient)",
     };
   }
 
   return (
-    <div className="card" style={cardStyle}>
-      <h1 className="card-title">{user.birdname}</h1>
-    </div>
+    <Link to={`/bird/${user._id}`} key={user._id}>
+      <div className="card" style={cardStyle}>
+        <h1 className="card-title">{user.birdname}</h1>
+      </div>
+    </Link>
   );
 };
 

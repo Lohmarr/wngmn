@@ -7,7 +7,8 @@ import { DELETE_USER } from "../utils/mutations";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import UpdatePop from "../components/popUps/updatePop";
-import Posts from "../components/Posts";
+import PostList from "../components/PostList";
+import PostForm from "../components/PostForm";
 import ConfirmationModal from "../components/ConfirmationModal";
 
 const UserProfile = () => {
@@ -54,16 +55,16 @@ const UserProfile = () => {
       <div className="user-profile">
         <div className="profile-header">
           <h1>{bird.birdname}</h1>
+          <h5>username: {bird.username}</h5>
           <p>You're a great bird, aren't you? {bird.migration}</p>
         </div>
         <div className="profile-content">
           <div className="profile-image">
-            <img src={bird.img} alt={bird.birdname} />
+            <img src={bird.img} alt={bird.username} />
           </div>
           <div className="profile-details">
             <h2>About Me</h2>
             <p>{bird.quote}</p>
-            <Posts />
           </div>
         </div>
         <button onClick={togglePopup} className="upd-btn">
@@ -81,6 +82,8 @@ const UserProfile = () => {
           />
         )}
       </div>
+      <div><PostForm /></div>
+      <div><PostList id={id} /></div>
       <Footer />
       {showPopup && <UpdatePop onClose={togglePopup} />}
     </section>

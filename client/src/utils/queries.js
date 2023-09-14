@@ -5,6 +5,7 @@ export const QUERY_USERS = gql`
     users {
       _id
       birdname
+      username
       img
       quote
       migration
@@ -30,6 +31,7 @@ export const QUERY_SINGLE_USER = gql`
     users(userId: $userId) {
       _id
       birdname
+      username
       img
       quote
       migration
@@ -51,11 +53,22 @@ export const QUERY_SINGLE_USER = gql`
 `;
 
 export const QUERY_POSTS = gql`
-  query Posts($username: String) {
-    posts(username: $username) {
+  query Posts {
+    posts {
       _id
       createdAt
       postText
+      postAuthor
+    }
+  }
+`;
+export const QUERY_USER_POSTS = gql`
+  query Posts($userId: ID!) {
+    userPosts(userId: $userId) {
+      _id
+      createdAt
+      postText
+      postAuthor
     }
   }
 `;
@@ -93,11 +106,10 @@ export const QUERY_ME = gql`
   }
 `;
 
-export const GET_USER_LIKES = gql`
-  query GetUserLikes($id: ID!) {
-    getUserLikes(id: $id) {
-      birdname
-      img
-    }
+export const QUERY_LIKES = gql`
+query GetLikes($userId: ID!) {
+  getLikes(userId: $userId) {
+    likedBy
   }
+}
 `;

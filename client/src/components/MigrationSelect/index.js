@@ -1,4 +1,4 @@
-const MigrationSelect = ({ handleSelectChange }) => {
+const MigrationSelect = ({ selectedValue, handleSelectChange }) => {
 
     return (
       <div>
@@ -6,7 +6,7 @@ const MigrationSelect = ({ handleSelectChange }) => {
           <label htmlFor="migration-pattern-select">
             Sort by Migration Pattern:
           </label>
-          <select id="migration-pattern-select" onChange={handleSelectChange}>
+          <select id="migration-pattern-select" value={selectedValue} onChange={handleSelectChange}>
             <option value="">All</option>
             <option value="New Zealand to Alaska">New Zealand to Alaska</option>
             <option value="Arctic to Antarctic and Back">

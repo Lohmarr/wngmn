@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_USERS } from "../../utils/queries";
 import Card from "../Card/Card";
@@ -10,7 +9,7 @@ const UserList = () => {
   const { loading, error, data } = useQuery(QUERY_USERS);
   const [selectedPattern, setSelectedPattern] = useState("");
   const [showLikedBirds, setShowLikedBirds] = useState(false);
-  const loggedInLikes = AuthService.getUserLikes();
+  const loggedInUserLikes = AuthService.getUserLikes();
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -41,20 +40,23 @@ const UserList = () => {
 
   if (showLikedBirds) {
     sortedUsers = sortedUsers.filter((user) =>
-      loggedInLikes.some((likedUser) => likedUser._id === user._id)
+      loggedInUserLikes.some((likedUser) => likedUser === user._id)
     );
   }
 
   if (sortedUsers.length === 0) {
     return (
       <>
-        <MigrationSelect handleSelectChange={handleSelectChange} />
-        <button onClick={handleLikedBirdsButtonClick}>
+        <MigrationSelect
+          selectedValue={selectedPattern}
+          handleSelectChange={handleSelectChange}
+        />
+        <button className="liked-button" onClick={handleLikedBirdsButtonClick}>
           {showLikedBirds ? "Show All Birds" : "Show Liked Birds"}
         </button>
         <h2>No birds currently on this path!</h2>
-        {loggedInLikes === null ||
-          (loggedInLikes.length === 0 && (
+        {loggedInUserLikes === null ||
+          (loggedInUserLikes.length === 0 && (
             <h2>You haven't liked any birds yet!</h2>
           ))}
       </>
@@ -64,18 +66,22 @@ const UserList = () => {
   return (
     <>
       <div className="dash-sorting">
-        <MigrationSelect handleSelectChange={handleSelectChange} />
-        <button onClick={handleLikedBirdsButtonClick}>
+        <MigrationSelect
+          selectedValue={selectedPattern}
+          handleSelectChange={handleSelectChange}
+        />
+        <button className="liked-button" onClick={handleLikedBirdsButtonClick}>
           {showLikedBirds ? "Show All Birds" : "Show Liked Birds"}
         </button>
       </div>
-      <div className="cardContainer">
+      <div className="card-container">
         <div className="card-list">
-          {sortedUsers.map((user) => (
-            <Link to={`/bird/${user._id}`} key={user._id}>
-              <Card user={user} key={user._id} />
-            </Link>
-          ))}
+        {sortedUsers.map((user) => {
+            if (user._id === AuthService.getUserId()) {
+              return null; // Skip rendering the card for the logged-in user
+            }
+            return <Card user={user} key={user._id} />;
+          })}
         </div>
       </div>
     </>
