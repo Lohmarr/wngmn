@@ -12,7 +12,7 @@
   "description": "",
   "main": "server/server.js",
   "scripts": {
-    "start": "node server --ignore client",
+    "start": "cd client && npm start",
     "develop": "concurrently \"cd server && nodemon\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
