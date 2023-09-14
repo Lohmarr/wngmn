@@ -1,20 +1,48 @@
-<!-- # Wingman
+# Wingman - MERN Stack Application
 
-## Description
+Wingman is a full-stack web application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It is a dating app designed for birds, by birds.
 
-In this MERN-stack single-page dating application, a user can create and maintain a profile that allows them to post life updates, browse other users and their posts, and much more. This application allows birds to connect with other birds to find their true love. This is made possible through a scalable MongoDB back end, a GraphQL API, and an Express.js and Node.js server with a React front end, implementing user authentication with JWT to build a user-focused platform.
+## Features
 
-## Usage
+- User registration and authentication
+- User profiles with updatable information
+- Personal posts to display on user profiles
+- Love calculator for finding compatible partners
+- Ability to like and remove your likes from other birds
+- Migration pattern filtering for finding birds on the same path
+- Responsive design for mobile and desktop devices
 
-To use the application, simply open this link in your browser of choice!
-<!-- link here -->
+## Technologies Used
 
-<!-- You will be land on our home page and be able to create an account or log-in from there. Please take a look at all the profiles that our fellow feathered creatures already created!
+- MongoDB: NoSQL database for storing user and bird data
+- Express.js: Backend framework for handling HTTP requests and routes
+- React.js: Frontend library for building user interfaces
+- Node.js: JavaScript runtime environment for server-side development
+- GraphQL: Query language for interacting with the backend API
+- Apollo Server: GraphQL server for handling data fetching and mutations
+- JWT: JSON Web Tokens for user authentication and authorization
+- React Router: Routing library for navigating between pages
+- Heroku: Cloud platform for deploying and hosting the application
+
+## Getting Started
+
+How to run the application locally:
+
+1. Clone the repository: `git clone https://github.com/your-username/wingman.git`
+2. Install dependencies: `npm run install`
+3. Seed the database: `npm run seed`
+4. Start the development server: `npm run develop`
+5. Open the application in your browser: `http://localhost:3000`
+
+## Folder Structure
+
+- `client`: Frontend codebase built with React.js
+- `server`: Backend codebase built with Node.js and Express.js
+- `models`: Database models
+- `schemas`: GraphQL resolvers and typeDefs
+- `utils`: Auth information, mutations, and queries
+- `config`: Configuration files for environment variables
 
 ## Credits
 
 Credit to [Jameson Suttles](https://github.com/Jsuttle2) for the Wingman logo
-
-## License
-
-This code is released under the MIT License. --> -->
