@@ -2,6 +2,8 @@
 
 Wingman is a full-stack web application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It is a dating app designed for birds, by birds.
 
+[Heroku Deployment](https://wngmn-72e58af3a89c.herokuapp.com)
+
 ## Features
 
 - User registration and authentication
@@ -24,11 +26,7 @@ Wingman is a full-stack web application built using the MERN (MongoDB, Express.j
 - React Router: Routing library for navigating between pages
 - Heroku: Cloud platform for deploying and hosting the application
 
-## Getting Started
-
-[Heroku Deployment](https://wngmn-72e58af3a89c.herokuapp.com)
-
-How to run the application locally:
+## Running Application Locally
 
 1. Clone the repository: `git clone https://github.com/your-username/wingman.git`
 2. Install dependencies: `npm run install`
