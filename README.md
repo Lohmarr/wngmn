@@ -10,10 +10,10 @@ Wingman is a full-stack web application built using the MERN (MongoDB, Express.j
 - User profiles with updatable information
 - Personal posts to display on user profiles
 - Love calculator for finding compatible partners
-- Ability to like and remove your likes from other birds
-- Migration pattern filtering for finding birds on the same path
+- Ability to like profiles and view profiles that like you
+- Migration pattern filtering and liked birds filtering
 - Responsive design for mobile and desktop devices
-- Randomly generated seeded database so you aren't alone while perusing the demo
+- Randomly generated and seeded database so you aren't alone while perusing the demo
 
 ## Technologies Used
 
