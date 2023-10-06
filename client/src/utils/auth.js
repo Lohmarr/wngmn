@@ -35,6 +35,16 @@ class AuthService {
     return name;
   }
 
+  getUsername() {
+    // Check if the 'username' value is set in the localStorage
+    const username = localStorage.getItem('username');
+    if (!username) {
+      console.warn("'birdname' value is not set in the localStorage");
+      return null;
+    }
+    return username;
+  }
+
   loggedIn() {
     const token = this.getToken();
     // If there is a token and it's not expired, return `true`
@@ -63,6 +73,7 @@ class AuthService {
     localStorage.setItem('id_token', idToken);
     localStorage.setItem('_id', decodedToken.data._id);
     localStorage.setItem('birdname', decodedToken.data.birdname);
+    localStorage.setItem('username', decodedToken.data.username);
     localStorage.setItem('likes', JSON.stringify(decodedToken.data.likes));
     localStorage.setItem('likedBy', JSON.stringify(decodedToken.data.likedBy));
     console.log(decodedToken.data._id)

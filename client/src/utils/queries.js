@@ -26,9 +26,9 @@ export const QUERY_USERS = gql`
   }
 `;
 
-export const QUERY_SINGLE_USER = gql`
+export const QUERY_USER = gql`
   query User($userId: ID!) {
-    users(userId: $userId) {
+    user(userId: $userId) {
       _id
       birdname
       username
@@ -73,7 +73,7 @@ export const QUERY_USER_POSTS = gql`
   }
 `;
 
-export const QUERY_SINGLE_POST = gql`
+export const QUERY_POST = gql`
   query Post($postId: ID!) {
     post(postId: $postId) {
       _id
@@ -106,10 +106,12 @@ export const QUERY_ME = gql`
   }
 `;
 
-export const QUERY_LIKES = gql`
-query GetLikes($userId: ID!) {
-  getLikes(userId: $userId) {
-    likedBy
+export const QUERY_LIKERS = gql`
+query Likers($userId: ID!) {
+  likers(userId: $userId) {
+    _id
+    birdname
+    img
   }
 }
 `;

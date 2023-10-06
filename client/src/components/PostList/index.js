@@ -2,6 +2,7 @@ import { useQuery, useMutation, useApolloClient } from "@apollo/client";
 import React, { useEffect, useReducer } from "react";
 import { QUERY_USER_POSTS } from "../../utils/queries";
 import { REMOVE_POST } from "../../utils/mutations";
+import AuthService from "../../utils/auth";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -22,7 +23,6 @@ const reducer = (state, action) => {
 };
 
 const PostList = ({ id }) => {
-  // const { loading, error, data } = useQuery(QUERY_POSTS);
   const { loading, error, data } = useQuery(QUERY_USER_POSTS, {
     variables: { userId: id },
     fetchPolicy: "cache-and-network",
@@ -30,7 +30,8 @@ const PostList = ({ id }) => {
   console.log(data);
   const [removePost] = useMutation(REMOVE_POST);
   const apolloClient = useApolloClient();
-  
+  const loggedInUsername = AuthService.getUsername();
+
   const initialState = {
     posts: [],
     isPostRemoved: false,
@@ -51,7 +52,7 @@ const PostList = ({ id }) => {
     try {
       await removePost({
         variables: { postId },
-        refetchQueries: [{query: QUERY_USER_POSTS}],
+        refetchQueries: [{ query: QUERY_USER_POSTS }],
       });
       dispatch({ type: "REMOVE_POST", payload: postId });
     } catch (error) {
@@ -65,7 +66,7 @@ const PostList = ({ id }) => {
   if (error) {
     return <p>Error: {error.message}</p>;
   }
-  
+
   const { posts, isPostRemoved } = state;
 
   return (
@@ -78,14 +79,16 @@ const PostList = ({ id }) => {
           <div className="post" key={post._id}>
             <div className="post-header">
               <h3>{post.postAuthor}</h3>
-              <div className="post-end-container">
-                <button
-                  className="post-delete-button"
-                  onClick={() => handleRemovePostButtonClick(post._id)}
-                >
-                  &#10007;
-                </button>
-              </div>
+              {post.postAuthor === loggedInUsername && (
+                <div className="post-end-container">
+                  <button
+                    className="post-delete-button"
+                    onClick={() => handleRemovePostButtonClick(post._id)}
+                  >
+                    &#10007;
+                  </button>
+                </div>
+              )}
             </div>
             <hr></hr>
             <div className="post-body">

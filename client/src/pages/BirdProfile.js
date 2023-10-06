@@ -37,9 +37,11 @@ const BirdProfile = () => {
           <p>{bird.migration}</p>
         </div>
         <div className="profile-content">
-          <div className="profile-image">
-            <img src={bird.img} alt="Profile" />
-          </div>
+          {bird.img && (
+            <div className="profile-image">
+              <img src={bird.img} alt={bird.username} />
+            </div>
+          )}
           <div className="profile-details">
             <h3>About Me</h3>
             <p className="bio-p">{bird.quote}</p>

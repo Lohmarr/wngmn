@@ -11,12 +11,12 @@ const Header = () => {
     <>
       <div className="header">
         <Link to="/dashboard">
-          <img src="../imgs/P3-logo.png" alt="wingman logo" />
+          <img src="/imgs/P3-logo.png" alt="wingman logo" />
         </Link>
         <div className="headerRight">
-        {/* <Link to={`/account/likes/${userId}`}>
+        <Link to={`/account/likes/${userId}`}>
           <button className="ac-btn">Your Likes</button>
-        </Link> */}
+        </Link>
         <Link to={`/account/${userId}`}>
           <button className="ac-btn">Account</button>
         </Link>

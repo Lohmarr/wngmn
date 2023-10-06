@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../componentStyles/userProfile.css";
 import { useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_USERS } from "../utils/queries";
@@ -59,9 +58,11 @@ const UserProfile = () => {
           <p>You're a great bird, aren't you? {bird.migration}</p>
         </div>
         <div className="profile-content">
-          <div className="profile-image">
-            <img src={bird.img} alt={bird.username} />
-          </div>
+          {bird.img && (
+            <div className="profile-image">
+              <img src={bird.img} alt={bird.username} />
+            </div>
+          )}
           <div className="profile-details">
             <h2>About Me</h2>
             <p>{bird.quote}</p>
@@ -82,8 +83,12 @@ const UserProfile = () => {
           />
         )}
       </div>
-      <div><PostForm /></div>
-      <div><PostList id={id} /></div>
+      <div>
+        <PostForm />
+      </div>
+      <div>
+        <PostList id={id} />
+      </div>
       <Footer />
       {showPopup && <UpdatePop onClose={togglePopup} />}
     </section>

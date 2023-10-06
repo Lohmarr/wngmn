@@ -1,20 +1,20 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User, Post } = require("../models");
 const { signToken } = require("../utils/auth");
+const { ObjectId } = require("mongodb");
 
 const resolvers = {
   // read data from the db
   Query: {
     // get all users
     users: async () => {
-      const findUser = await User.find({});
-      console.log(findUser);
-      return findUser;
+      const users = await User.find({});
+      return users;
     },
     // get a user by id
-    user: async (_, { _id }) => {
+    user: async (_, { userId }) => {
       try {
-        const user = await User.findById(_id);
+        const user = await User.findById(userId);
         return user;
       } catch (error) {
         console.error("Error querying user:", error);
@@ -50,13 +50,19 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    getLikes: async (_, { _id }) => {
-      try {
-        return User.findById(_id).populate("likedBy");
-      }  catch (error) {
-        console.error("Error querying user:", error);
-        throw new Error("Failed to fetch user's likedBy");
+    likers: async (_, { userId }) => {
+      const user = await User.findById(userId);
+      if (!user) {
+        throw new Error("User not found");
       }
+
+      // Retrieve the user's LikedBy
+      const likedBy = user.likedBy;
+
+      // Fetch user objects for each id in the likedBy array
+      const likers = await User.find({ _id: { $in: likedBy } });
+
+      return likers;
     },
   },
 

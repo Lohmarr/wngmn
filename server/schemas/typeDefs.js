@@ -42,7 +42,7 @@ const typeDefs = gql`
     posts(username: String): [Post]
     post(postId: ID!): Post
     me: User
-    getLikes(userId: ID!): User
+    likers(userId: ID!): [User]
     userPosts(userId: ID!): [Post]
   }
   

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import "../componentStyles/welcome.css";
 import SignUpPop from "../components/popUps/SignUpPop";
 import LoginPop from "../components/popUps/loginPop";
 import Footer from "../components/Footer";
@@ -8,26 +7,6 @@ import Footer from "../components/Footer";
 const Welcome = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [showPopupTwo, setShowPopupTwo] = useState(false);
-
-  // useEffect(() => {
-  //   const buttons = document.querySelectorAll("[data-carouselButton]");
-
-  //   buttons.forEach(button => {
-  //     button.addEventListener("click", () => {
-  //       const offset = button.dataset.carouselButton === "next" ? 1 : -1;
-  //       const slides = button.closest("[data-carousel]").querySelector("[data-slides]");
-
-  //       const activeSlide = slides.querySelector('[data-active]')
-  //       let newIndex = [...slides.children].indexOf(activeSlide) + offset;
-        
-  //       if (newIndex < 0) newIndex = slides.children.length - 1;
-  //       if (newIndex >= slides.children.length) newIndex = 0;
-
-  //       slides.children[newIndex].dataset.active = true;
-  //       delete activeSlide.dataset.active;
-  //     });
-  //   });
-  // }, []);
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
@@ -57,32 +36,6 @@ const Welcome = () => {
             JOIN WINGMAN TODAY
           </button>
         </div>
-        {/* <div className="image-carousel" data-carousel>
-          <button className="carousel-button prev" data-carouselButton>&#8656;</button>
-          <ul data-slides>
-            <li className="slide" data-active>
-              <img
-                className="active c-img"
-                src="../imgs/yellow-bird.png"
-                alt="bird image #1"
-              />
-            </li>
-            <li className="slide">
-              <img className="c-img" src="imgs/eagle.png" alt="bird image #2" />
-            </li>
-            <li className="slide">
-              <img
-                className="c-img"
-                src="imgs/bird-of-paradise.png"
-                alt="bird image #3"
-              />
-            </li>
-            <li className="slide">
-              <img className="c-img" src="imgs/gull.png" alt="bird image #4" />
-            </li>
-          </ul>
-          <button className="carousel-button next" data-carouselButton>&#8658;</button>
-        </div> */}
       </div>
       <Footer />
       {showPopup && <SignUpPop onClose={togglePopup} />}{" "}

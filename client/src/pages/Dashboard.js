@@ -1,6 +1,5 @@
 import React from "react";
 import UserList from "../components/UserList/index";
-import "../componentStyles/welcome.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
